@@ -15,7 +15,7 @@
  * To make the second one happen, the number to change
  * is the first argument to `repeat`, currently set at 10.
  */
-const gridWidth = 10;
+const gridWidth = 30;
 let count = 0;
 while (count <= gridWidth * gridWidth) {
   const canvas = document.querySelector('.canvas');
@@ -46,6 +46,12 @@ while (count <= gridWidth * gridWidth) {
  * QUERIES *
 ***********/
 
+let brush = document.querySelector('.current-brush');
+let palette = document.querySelectorAll('.palette div');
+let clickCounter = 0;
+let canvasSquares = document.querySelectorAll('.canvas div');
+let app = document.querySelector('.app');
+let isMouseDown = false;
 // Add queries for all your squares, palette colors, and brush here.
 // (Note the singular or plural used in that sentence!)
 
@@ -54,6 +60,58 @@ while (count <= gridWidth * gridWidth) {
 /****************************
  * EVENT LISTENER FUNCTIONS *
 ****************************/
+
+ brush.addEventListener('click', function (){
+
+  
+
+ })
+
+for (let i = 0; i < palette.length; i++) {
+   
+  palette[i].addEventListener('click', function(){
+
+    brush.classList.replace(brush.classList[1], palette[i].classList[1]);
+  })
+  
+}
+
+ // element.addEventListener('click', function(){
+
+  //   element.classList.replace(element.classList[1],brush.classList[1])
+  //   console.log(element.classList)
+  
+  //   })
+
+canvasSquares.forEach(element => {
+  
+
+  element.addEventListener('mouseenter', function(){
+  if (isMouseDown === true){
+  element.classList.replace(element.classList[1],brush.classList[1])
+  console.log(element.classList)
+  }
+  })
+
+
+});
+
+
+
+app.addEventListener('mousedown',function(){
+
+  isMouseDown = true;
+  console.log('mouse is down')
+  console.log('is mouse down' + isMouseDown)
+})
+
+app.addEventListener('mouseup', function(){
+
+  isMouseDown = false;
+  console.log('mouse is up')
+  console.log('is mouse down' + isMouseDown)
+})
+
 
 // Now add some functions to handle clicking one particular square
 // and clicking one particular palette color. You can leave them
